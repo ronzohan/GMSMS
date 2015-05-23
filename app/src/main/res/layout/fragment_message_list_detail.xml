@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/message_list_detail">
+
+    <ImageView
+        android:layout_width="@dimen/message_list_detail_pic_width"
+        android:layout_height="@dimen/message_list_detail_pic_height"
+        android:id="@+id/message_list_detail_pic"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recipient: "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/message_list_detail_recipients"
+                android:text="09169777569, 09355477233, Ron, Clandine..."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Message: "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/message_list_detail_message"
+                android:text="Good Morning!"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:paddingRight="14dp"
+                android:id="@+id/message_list_detail_schedule_day"
+                android:text="Mon, Tue, Wed, Thu, Fri, Sat, Sun"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/message_list_detail_schedule_time"
+                android:textSize="10sp"
+                android:text="6:30 AM"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
