@@ -1,12 +1,11 @@
-package com.example.ronzohan.gmsms;
+package com.example.ronzohan.gmsms.Screens;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.app.FragmentManager;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+
+import com.example.ronzohan.gmsms.R;
 
 /**
  * Created by ronzohan on 5/21/15.
