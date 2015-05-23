@@ -7,15 +7,15 @@ import java.util.ArrayList;
 /**
  * Created by ronzohan on 5/24/15.
  */
-public class SMSMesssage implements Message {
+public class SMSMessage implements Message {
     private ArrayList<Recipient> messageRecipients;
     private String message;
 
-    public SMSMesssage(String message) {
+    public SMSMessage(String message) {
         this.message = message;
     }
 
-    public SMSMesssage(String message, ArrayList<Recipient> messageRecipients) {
+    public SMSMessage(String message, ArrayList<Recipient> messageRecipients) {
         this.message = message;
         this.messageRecipients = messageRecipients;
     }
