@@ -1,18 +1,23 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/message_list_detail">
+    android:id="@+id/message_list_detail" >
 
     <ImageView
         android:layout_width="@dimen/message_list_detail_pic_width"
         android:layout_height="@dimen/message_list_detail_pic_height"
-        android:id="@+id/message_list_detail_pic"/>
+        android:id="@+id/message_list_detail_pic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/message_list_detail_pic"
+        android:layout_toEndOf="@+id/message_list_detail_pic">
 
 
         <LinearLayout
@@ -53,8 +58,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:paddingRight="14dp"
+                android:textColor="@color/button_material_dark"
                 android:id="@+id/message_list_detail_schedule_day"
                 android:text="Mon, Tue, Wed, Thu, Fri, Sat, Sun"/>
 
@@ -62,11 +68,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/message_list_detail_schedule_time"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:text="6:30 AM"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

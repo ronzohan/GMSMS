@@ -8,6 +8,18 @@ public class Recipient {
     private String address;
     private String contactNo;
 
+
+    public Recipient(String name, String contactNo) {
+        this.name = name;
+        this.contactNo = contactNo;
+        this.address = "";
+    }
+
+    public Recipient(String name, String contactNo, String address) {
+        this.name = name;
+        this.contactNo = contactNo;
+        this.address = address;
+    }
     public String getName() {
         return name;
     }
