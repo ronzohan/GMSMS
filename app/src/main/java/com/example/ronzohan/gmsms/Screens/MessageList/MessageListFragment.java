@@ -1,11 +1,10 @@
-package com.example.ronzohan.gmsms.Screens;
+package com.example.ronzohan.gmsms.Screens.MessageList;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.ListFragment;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 

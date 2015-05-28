@@ -4,9 +4,6 @@ import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
 import java.util.ArrayList;
 
-/**
- * Created by ronzohan on 5/24/15.
- */
 public class SMSMessage implements Message {
     private ArrayList<Recipient> messageRecipients;
     private String message;

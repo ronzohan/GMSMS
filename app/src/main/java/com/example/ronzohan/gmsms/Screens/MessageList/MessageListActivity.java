@@ -1,4 +1,4 @@
-package com.example.ronzohan.gmsms.Screens;
+package com.example.ronzohan.gmsms.Screens.MessageList;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,9 +7,6 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.example.ronzohan.gmsms.R;
 
-/**
- * Created by ronzohan on 5/21/15.
- */
 public class MessageListActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

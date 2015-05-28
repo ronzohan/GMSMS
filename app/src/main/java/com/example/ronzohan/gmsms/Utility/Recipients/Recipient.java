@@ -1,47 +1,44 @@
 package com.example.ronzohan.gmsms.Utility.Recipients;
 
-/**
- * Created by ronzohan on 5/24/15.
- */
 public class Recipient {
-    private String name;
-    private String address;
-    private String contactNo;
+    private String mName;
+    private String mAddress;
+    private String mContactNo;
 
 
-    public Recipient(String name, String contactNo) {
-        this.name = name;
-        this.contactNo = contactNo;
-        this.address = "";
+    public Recipient(String mName, String contactNo) {
+        this.mName = mName;
+        this.mContactNo = contactNo;
+        this.mAddress = "";
     }
 
     public Recipient(String name, String contactNo, String address) {
-        this.name = name;
-        this.contactNo = contactNo;
-        this.address = address;
+        this.mName = name;
+        this.mContactNo = contactNo;
+        this.mAddress = address;
     }
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getAddress() {
-        return address;
+        return mAddress;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.mAddress = address;
     }
 
     public String getContactNo() {
-        return contactNo;
+        return mContactNo;
     }
 
     public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
+        this.mContactNo = contactNo;
     }
 
 
