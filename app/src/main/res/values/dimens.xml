@@ -12,4 +12,8 @@
     <dimen name="margin_regular">8dp</dimen>
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_extra_large">32dp</dimen>
+
+    <!--Padding -->
+    <dimen name="padding_regular">8dp</dimen>
+
 </resources>
