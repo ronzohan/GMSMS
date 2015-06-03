@@ -2,4 +2,9 @@
 <resources>
     <color name="actionbar_background">#9999ff</color>
     <color name="actionbar_text">#ffffff</color>
+
+    <!--Textview colors -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
 </resources>
