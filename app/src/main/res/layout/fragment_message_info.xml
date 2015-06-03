@@ -12,21 +12,92 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/margin_large">
+        android:layout_marginTop="@dimen/margin_large"
+        android:id="@+id/linearLayout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Recipients:"
+            android:text="@string/recipient"
             android:id="@+id/textView"
+            android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginLeft="@dimen/margin_regular" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/colon" />
 
         <EditText
-            android:layout_width="fill_parent"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText"
+            android:maxLines="4"
             android:layout_weight="0"
-            android:layout_marginRight="@dimen/margin_regular" />
+            android:layout_marginRight="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginLeft="@dimen/margin_regular"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/colon" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginLeft="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:layout_marginRight="@dimen/margin_regular"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginLeft="@dimen/margin_regular"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/colon" />
+
+
+    </LinearLayout>
+
 </RelativeLayout>

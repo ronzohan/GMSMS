@@ -17,13 +17,15 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/message_list_detail_pic"
-        android:layout_toEndOf="@+id/message_list_detail_pic">
+        android:layout_toEndOf="@+id/message_list_detail_pic"
+        android:layout_alignParentBottom="false">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_regular">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +40,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_regular">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +56,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_large">
 
             <TextView
                 android:layout_width="match_parent"
