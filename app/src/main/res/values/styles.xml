@@ -1,8 +1,10 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!-- Textview style -->
+    <style name="CustomTextView" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_marginLeft">@dimen/margin_regular</item>
+        <item name="android:layout_marginRight">@dimen/margin_regular</item>
+        <item name="android:padding">@dimen/padding_regular</item>
+        <item name="android:background">@color/white</item>
     </style>
 
 </resources>
