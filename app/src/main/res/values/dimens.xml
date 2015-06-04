@@ -9,11 +9,16 @@
     <dimen name="message_list_detail_pic_width">96dp</dimen>
 
     <!--Margin -->
-    <dimen name="margin_regular">8dp</dimen>
-    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
     <dimen name="margin_extra_large">32dp</dimen>
 
     <!--Padding -->
     <dimen name="padding_regular">8dp</dimen>
+
+    <!--Edittext round rect -->
+    <dimen name="radius">3dp</dimen>
+
+    <dimen name="button_min_size">50dp</dimen>
 
 </resources>

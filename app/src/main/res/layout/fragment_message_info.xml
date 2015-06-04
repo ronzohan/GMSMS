@@ -28,17 +28,15 @@
             android:id="@+id/textView"
             android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginLeft="@dimen/margin_regular" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/colon" />
+
+        <TextView style="@style/colon"/>
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/recipient_hint"
             android:inputType="textMultiLine"
-            style="@style/CustomTextView"
+            style="@style/RoundEditText"
             android:id="@+id/editText"
             android:maxLines="@integer/max_line_recipient"
             android:layout_weight="1" />
@@ -61,47 +59,108 @@
             android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginLeft="@dimen/margin_regular"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/colon" />
+
+        <TextView style="@style/colon"/>
 
         <EditText
-            android:layout_width="0"
+            style="@style/RoundEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/CustomTextView"
-            android:inputType="textMultiLine"
-            android:id="@+id/editText2"
             android:layout_weight="1"
+            android:inputType="textMultiLine"
+            android:hint="@string/message_hint"
+            android:id="@+id/editText2"
             android:maxLines="@integer/max_line_message"
+            android:layout_marginLeft="27dp"
             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:id="@+id/linearLayout3">
+
+            <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/monday" />
+        <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/tuesday" />
+        <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/wednesday" />
+        <Button
+            style="@style/NoSpacingButton"
+
+            android:text="@string/thursday" />
+        <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/friday" />
+        <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/saturday" />
+        <Button
+            style="@style/NoSpacingButton"
+            android:text="@string/sunday" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_below="@+id/linearLayout3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:id="@+id/linearLayout4">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+        <DigitalClock
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/digitalClock"
+            android:focusableInTouchMode="false"
             android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginLeft="@dimen/margin_regular"
-            />
+            android:textSize="32sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_large">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/sim"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/colon" />
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginLeft="@dimen/padding_regular"
+            />
+        <TextView style="@style/colon"/>
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sim 1 "
+            android:id="@+id/checkBox" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sim 2"
+            android:id="@+id/checkBox2" />
     </LinearLayout>
 
 </RelativeLayout>
