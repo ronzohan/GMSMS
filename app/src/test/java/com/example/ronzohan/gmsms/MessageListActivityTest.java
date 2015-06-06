@@ -3,7 +3,6 @@ package com.example.ronzohan.gmsms;
 import android.app.Activity;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.ronzohan.gmsms.Screens.MessageList.MessageListActivity;
 

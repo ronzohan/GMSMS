@@ -1,15 +1,16 @@
 package com.example.ronzohan.gmsms.Screens.MessageList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.ListFragment;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.ronzohan.gmsms.Helper.MessageListAdapter;
 import com.example.ronzohan.gmsms.R;
+import com.example.ronzohan.gmsms.Screens.MessageInfo.MessageInfoActivity;
 import com.example.ronzohan.gmsms.Utility.Messages.SMSMessage;
 
 import java.util.ArrayList;
@@ -35,7 +36,9 @@ public class MessageListFragment extends ListFragment{
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Toast.makeText(getActivity(), smsMessageArrayList.get(position).getMessage() ,Toast.LENGTH_LONG).show();
+
+        Intent myIntent = new Intent(getActivity(), MessageInfoActivity.class);
+        startActivity(myIntent);
     }
 
     @Override

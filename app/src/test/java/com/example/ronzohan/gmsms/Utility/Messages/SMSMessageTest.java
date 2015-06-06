@@ -1,16 +1,10 @@
-package com.example.ronzohan.gmsms.Utility;
+package com.example.ronzohan.gmsms.Utility.Messages;
 
-import com.example.ronzohan.gmsms.BuildConfig;
-import com.example.ronzohan.gmsms.Utility.Messages.SMSMessage;
 import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
-
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 

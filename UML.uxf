@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
-  <zoom_level>5</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <type>com.umlet.element.Interface</type>
     <coordinates>
-      <x>145</x>
-      <y>40</y>
-      <w>140</w>
-      <h>60</h>
+      <x>24</x>
+      <y>24</y>
+      <w>224</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>IMessage
 --
@@ -19,18 +19,17 @@ String getMessage()</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>260</x>
-      <y>165</y>
-      <w>155</w>
-      <h>50</h>
+      <x>216</x>
+      <y>232</y>
+      <w>232</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;IMessage&gt;&gt;
 SMSMessage
 --
 -message: String
 -messageRecipients: ArrayList&lt;Recipient&gt;
---
-SendMessage(String): int
+
 
 
 
@@ -41,49 +40,48 @@ SendMessage(String): int
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>200</x>
-      <y>80</y>
-      <w>144</w>
-      <h>94</h>
+      <x>112</x>
+      <y>88</y>
+      <w>240</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>15;15;135;85</additional_attributes>
+    <additional_attributes>24;24;224;144</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>355</x>
-      <y>45</y>
-      <w>100</w>
-      <h>55</h>
+      <x>256</x>
+      <y>0</y>
+      <w>160</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Recipient
 --
 -mName: String
 -mAddress: String
 -mContactNo: String
---
-SendMessage(String): int</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>85</y>
-      <w>94</w>
-      <h>89</h>
+      <x>312</x>
+      <y>64</y>
+      <w>40</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>85;15;15;80</additional_attributes>
+    <additional_attributes>24;24;24;168</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>285</x>
-      <y>490</y>
-      <w>105</w>
-      <h>25</h>
+      <x>256</x>
+      <y>752</y>
+      <w>168</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Activity&gt;&gt;
 MessageListActivity
@@ -93,10 +91,10 @@ MessageListActivity
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>245</x>
-      <y>375</y>
-      <w>180</w>
-      <h>60</h>
+      <x>192</x>
+      <y>568</y>
+      <w>288</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ListFragment&gt;&gt;
 MessageListFragment
@@ -109,10 +107,10 @@ MessageListFragment
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>240</x>
-      <y>280</y>
-      <w>185</w>
-      <h>50</h>
+      <x>184</x>
+      <y>416</y>
+      <w>296</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ArrayAdapter&gt;&gt;
 MessageListAdapter
@@ -125,55 +123,55 @@ arrayListSMSMessages: ArrayList&lt;SMSMessage&gt;
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>315</y>
-      <w>24</w>
-      <h>69</h>
+      <x>312</x>
+      <y>472</y>
+      <w>40</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>15;15;15;60</additional_attributes>
+    <additional_attributes>24;24;24;96</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>200</y>
-      <w>24</w>
-      <h>89</h>
+      <x>312</x>
+      <y>288</y>
+      <w>40</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>15;15;15;80</additional_attributes>
+    <additional_attributes>24;24;24;128</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>425</y>
-      <w>24</w>
-      <h>74</h>
+      <x>312</x>
+      <y>640</y>
+      <w>40</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>15;15;15;65</additional_attributes>
+    <additional_attributes>24;24;24;112</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>380</y>
-      <w>119</w>
-      <h>35</h>
+      <x>456</x>
+      <y>576</y>
+      <w>192</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 OnItemClick</panel_attributes>
-    <additional_attributes>110;25;15;25</additional_attributes>
+    <additional_attributes>176;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>520</x>
-      <y>380</y>
-      <w>175</w>
-      <h>60</h>
+      <x>632</x>
+      <y>576</y>
+      <w>280</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Fragment&gt;&gt;
 MessageInfo
@@ -186,23 +184,49 @@ MessageInfo
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>130</x>
-      <y>170</y>
-      <w>139</w>
-      <h>244</h>
+      <x>8</x>
+      <y>240</y>
+      <w>224</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>130;15;15;15;15;235;115;235</additional_attributes>
+    <additional_attributes>208;24;24;24;24;376;184;376</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>400</x>
-      <y>175</y>
-      <w>214</w>
-      <h>214</h>
+      <x>424</x>
+      <y>248</y>
+      <w>360</w>
+      <h>344</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>15;15;205;15;205;205</additional_attributes>
+    <additional_attributes>24;24;344;24;344;328</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>584</x>
+      <y>80</y>
+      <w>216</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>SMSMessageSender
+--
+-mSMSMessage:(SMSMessage)
+--
+sendMessage()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>424</x>
+      <y>152</y>
+      <w>176</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160;24;104;24;104;112;24;112</additional_attributes>
   </element>
 </diagram>
