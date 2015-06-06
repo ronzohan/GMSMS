@@ -20,6 +20,10 @@
             android:name=".Screens.MessageInfo.MessageInfoActivity"
             android:label="@string/title_activity_message_info" >
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="07953e68c6e157754474ba4de9a0f6acb3c1c0ac" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
