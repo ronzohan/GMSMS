@@ -22,7 +22,8 @@ public class SMSMessage implements Message {
     }
 
     public void addRecipient(Recipient recipient) {
-        messageRecipients.add(recipient);
+        if (!messageRecipients.contains(recipient))
+            messageRecipients.add(recipient);
     }
 
     public void setMessage(String message) {
