@@ -1,4 +1,4 @@
-package com.example.ronzohan.gmsms;
+package com.example.ronzohan.gmsms.Screens.MessageList;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.ronzohan.gmsms.BuildConfig;
+import com.example.ronzohan.gmsms.R;
 import com.example.ronzohan.gmsms.Screens.MessageInfo.MessageInfoActivity;
 import com.example.ronzohan.gmsms.Screens.MessageList.MessageListActivity;
 
