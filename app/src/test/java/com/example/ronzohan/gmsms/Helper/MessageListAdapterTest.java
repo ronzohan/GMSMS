@@ -37,5 +37,10 @@ public class MessageListAdapterTest extends AndroidTestCase {
         assertEquals(messageListAdapter.getCount(), 2);
     }
 
-    // TODO add more test cases
+
+    @Test
+    public void shouldReturnItemOnPosition() {
+        assertEquals(messageListAdapter.getItem(0), sampleSMSMessage1);
+        assertEquals(messageListAdapter.getItem(1), sampleSMSMessage2);
+    }
 }
