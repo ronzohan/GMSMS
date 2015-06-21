@@ -53,11 +53,6 @@ public class MessageListAdapter extends ArrayAdapter {
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
     public Object getItem(int position) {
         return this.arrayListSMSMessages.get(position);
     }
