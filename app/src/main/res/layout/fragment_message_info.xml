@@ -140,7 +140,8 @@
         android:layout_below="@+id/linearLayout4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/margin_large">
+        android:layout_marginTop="@dimen/margin_large"
+        android:id="@+id/linearLayout5">
 
         <TextView
             android:layout_width="wrap_content"
@@ -164,5 +165,34 @@
             android:text="Sim 2"
             android:id="@+id/checkBox2" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout5"
+        android:padding="@dimen/padding_regular"
+        android:id="@+id/linearLayout6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>
