@@ -3,10 +3,14 @@ package com.example.ronzohan.gmsms.Utility.Messages;
 import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SMSMessage implements Message {
     private ArrayList<Recipient> messageRecipients;
     private String message;
+    private Date time;
+    private int daySchedule_ID;
+
 
     public SMSMessage(String message) {
         this.message = message;
@@ -38,4 +42,19 @@ public class SMSMessage implements Message {
         return 0;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public int getDaySchedule_ID() {
+        return daySchedule_ID;
+    }
+
+    public void setDaySchedule_ID(int daySchedule_ID) {
+        this.daySchedule_ID = daySchedule_ID;
+    }
 }
