@@ -4,15 +4,18 @@ public class Recipient {
     private String mName;
     private String mAddress;
     private String mContactNo;
+    private int id;
 
 
-    public Recipient(String mName, String contactNo) {
+    public Recipient(int id,String mName, String contactNo) {
+        this.id = id;
         this.mName = mName;
         this.mContactNo = contactNo;
         this.mAddress = "";
     }
 
-    public Recipient(String name, String contactNo, String address) {
+    public Recipient(int id,String name, String contactNo, String address) {
+        this.id = id;
         this.mName = name;
         this.mContactNo = contactNo;
         this.mAddress = address;
