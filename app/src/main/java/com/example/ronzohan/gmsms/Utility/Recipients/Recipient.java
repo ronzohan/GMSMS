@@ -4,21 +4,39 @@ public class Recipient {
     private String mName;
     private String mAddress;
     private String mContactNo;
-    private int id;
+    private long mContactID;
+    private long id;
 
+    public Recipient(String mName, String contactNo) {
+        this.id = -1;
+        this.mName = mName;
+        this.mContactNo = contactNo;
+        this.mAddress = "";
+        this.mContactID = -1;
+    }
 
-    public Recipient(int id,String mName, String contactNo) {
+    public Recipient(long id,String mName, String contactNo) {
         this.id = id;
         this.mName = mName;
         this.mContactNo = contactNo;
         this.mAddress = "";
+        this.mContactID = -1;
     }
 
-    public Recipient(int id,String name, String contactNo, String address) {
+    public Recipient(long id,String mName, String contactNo, long mContactID) {
+        this.id = id;
+        this.mName = mName;
+        this.mContactNo = contactNo;
+        this.mAddress = "";
+        this.mContactID = mContactID;
+    }
+
+    public Recipient(long id,String name, String contactNo, String address) {
         this.id = id;
         this.mName = name;
         this.mContactNo = contactNo;
         this.mAddress = address;
+        this.mContactID = -1;
     }
     public String getName() {
         return mName;
@@ -44,7 +62,11 @@ public class Recipient {
         this.mContactNo = contactNo;
     }
 
+    public long getmContactID() {
+        return mContactID;
+    }
 
-
-
+    public void setmContactID(long mContactID) {
+        this.mContactID = mContactID;
+    }
 }
