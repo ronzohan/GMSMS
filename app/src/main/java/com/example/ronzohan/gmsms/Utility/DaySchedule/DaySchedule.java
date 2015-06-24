@@ -1,22 +1,37 @@
 package com.example.ronzohan.gmsms.Utility.DaySchedule;
 
+import java.util.Objects;
+
 public class DaySchedule {
     int MONDAY = 0;
     int TUESDAY = 0;
     int WEDNESDAY = 0;
     int THURSDAY = 0;
     int FRIDAY = 0;
-    int SATURYDAY = 0;
+    int SATURDAY = 0;
     int SUNDAY = 0;
     int messageInfoID;
 
-    private int id;
+    private long id;
 
-    public int getId() {
+    public DaySchedule() {}
+
+    public DaySchedule(int monday, int tuesday, int wednesday, int thursday, int friday,
+                       int saturday, int sunday) {
+        this.MONDAY = monday;
+        this.TUESDAY = tuesday;
+        this.WEDNESDAY = wednesday;
+        this.THURSDAY = thursday;
+        this.FRIDAY = friday;
+        this.SATURDAY = saturday;
+        this.SUNDAY = sunday;
+        this.messageInfoID = -1;
+    }
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -60,12 +75,12 @@ public class DaySchedule {
         this.FRIDAY = FRIDAY;
     }
 
-    public int getSATURYDAY() {
-        return SATURYDAY;
+    public int getSATURDAY() {
+        return SATURDAY;
     }
 
-    public void setSATURYDAY(int SATURYDAY) {
-        this.SATURYDAY = SATURYDAY;
+    public void setSATURDAY(int SATURDAY) {
+        this.SATURDAY = SATURDAY;
     }
 
     public int getSUNDAY() {
@@ -83,4 +98,5 @@ public class DaySchedule {
     public void setMessageInfoID(int messageInfoID) {
         this.messageInfoID = messageInfoID;
     }
+
 }
