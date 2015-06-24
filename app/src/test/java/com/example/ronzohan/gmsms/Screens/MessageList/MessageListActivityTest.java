@@ -10,7 +10,6 @@ import android.widget.ListView;
 import com.example.ronzohan.gmsms.BuildConfig;
 import com.example.ronzohan.gmsms.R;
 import com.example.ronzohan.gmsms.Screens.MessageInfo.MessageInfoActivity;
-import com.example.ronzohan.gmsms.Screens.MessageList.MessageListActivity;
 
 import org.junit.Before;
 import org.junit.Test;

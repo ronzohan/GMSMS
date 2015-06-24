@@ -1,8 +1,5 @@
 package com.example.ronzohan.gmsms.Screens.MessageList;
 
-import android.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
 import android.widget.ListView;
 
 import com.example.ronzohan.gmsms.BuildConfig;
