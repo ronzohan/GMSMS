@@ -2,6 +2,7 @@ package com.example.ronzohan.gmsms.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -11,7 +12,7 @@ import com.example.ronzohan.gmsms.Utility.Messages.SMSMessage;
 import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "GMSMS";
 
     //Table Name
@@ -25,13 +26,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_MESSAGE = "message";
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_MESSAGEINFO_FK = "messageinfo_FK";
-    private static final String COLUMN_DAYS_FK = "days_FK";
 
     //SimAssigned Column Names
     private static final String COLUMN_SIMNAME = "simname";
 
     //Recipients Column Names
     private static final String COLUMN_CONTACTID = "contact_id";
+    private static final String COLUMN_CONTACTNAME = "name";
+    private static final String COLUMN_CONTACTADDRESS = "address";
+    private static final String COLUMN_CONTACTNO = "contact_no";
 
     //Days Column Names
     private static final String COLUMN_MONDAY = "monday";
@@ -44,21 +47,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    String CREATE_MESSAGEINFO_TABLE = "CREATE TABLE " +  TABLE_MESSAGEINFO + "("
+    private static final String CREATE_MESSAGEINFO_TABLE = "CREATE TABLE " +  TABLE_MESSAGEINFO + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_MESSAGE + " TEXT,"
             + COLUMN_TIME + " DATETIME" + ");";
 
-    String CREATE_SIMASSIGNED_TABLE = "CREATE TABLE " + TABLE_SIMASSIGNED + "("
+    private static final String CREATE_SIMASSIGNED_TABLE = "CREATE TABLE " + TABLE_SIMASSIGNED + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SIMNAME + " TEXT,"
             + COLUMN_MESSAGEINFO_FK + " INTEGER, FOREIGN KEY ("+ COLUMN_MESSAGEINFO_FK
             +") REFERENCES " + TABLE_MESSAGEINFO + "(" + COLUMN_ID+ ")" + ");";
 
-    String CREATE_RECIPIENTS_TABLE = "CREATE TABLE " + TABLE_RECIPIENTS + "("
+    private static final String CREATE_RECIPIENTS_TABLE = "CREATE TABLE " + TABLE_RECIPIENTS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CONTACTID + " INTEGER,"
+            + COLUMN_CONTACTNAME + " TEXT," + COLUMN_CONTACTADDRESS + " TEXT, "
             + COLUMN_MESSAGEINFO_FK + " INTEGER, FOREIGN KEY ("+ COLUMN_MESSAGEINFO_FK
             +") REFERENCES " + TABLE_MESSAGEINFO + "(" + COLUMN_ID+ ")" + ");";
 
-    String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS + "("
+    private static final String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_MONDAY + " INTEGER,"
             + COLUMN_TUESDAY + " INTEGER,"
@@ -106,6 +110,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
     }
 
+//    public SMSMessage getSMSMessage(int smsMessageID) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        String selectQuery = "SELECT  * FROM " + TABLE_MESSAGEINFO + " WHERE "
+//                + COLUMN_ID + " = " + smsMessageID;
+//
+//        Cursor c = db.rawQuery(selectQuery, null);
+//        if (c != null)
+//            c.moveToFirst();
+//
+//        SMSMessage smsMessage = new SMSMessage()
+//    }
     public long insertDaySchedule(int messageInfoID, DaySchedule daySchedule) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_MONDAY, daySchedule.getMONDAY());
@@ -113,10 +129,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_WEDNESDAY, daySchedule.getWEDNESDAY());
         values.put(COLUMN_THURSDAY, daySchedule.getTHURSDAY());
         values.put(COLUMN_FRIDAY, daySchedule.getFRIDAY());
-        values.put(COLUMN_SATURDAY, daySchedule.getSATURYDAY());
+        values.put(COLUMN_SATURDAY, daySchedule.getSATURDAY());
         values.put(COLUMN_SUNDAY, daySchedule.getSUNDAY());
         values.put(COLUMN_MESSAGEINFO_FK, messageInfoID);
 
         return getWritableDatabase().insert(TABLE_DAYS, null, values);
     }
+
+    public DaySchedule getDaySchedule(long dayScheduleID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_DAYS + " WHERE "
+                + COLUMN_ID + " = " + dayScheduleID;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+
+        DaySchedule daySchedule = new DaySchedule();
+        daySchedule.setId(cursor.getInt(0));
+        daySchedule.setMONDAY(cursor.getInt(1));
+        daySchedule.setTUESDAY(cursor.getInt(2));
+        daySchedule.setWEDNESDAY(cursor.getInt(3));
+        daySchedule.setTHURSDAY(cursor.getInt(4));
+        daySchedule.setFRIDAY(cursor.getInt(5));
+        daySchedule.setSATURDAY(cursor.getInt(6));
+        daySchedule.setSUNDAY(cursor.getInt(7));
+        daySchedule.setMessageInfoID(cursor.getInt(8));
+
+        return daySchedule;
+    }
+
+    public long insertRecipients(int messageInfoID, Recipient recipient) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CONTACTID, recipient.getmContactID());
+        values.put(COLUMN_CONTACTNAME, recipient.getName());
+        values.put(COLUMN_CONTACTADDRESS, recipient.getAddress());
+
+        return getWritableDatabase().insert(TABLE_RECIPIENTS, null, values);
+    }
+
+    public Recipient getRecipient(long recipientID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_RECIPIENTS + " WHERE "
+                + COLUMN_ID + " = " + recipientID;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        long recpientIDFromDB = cursor.getInt(0);
+        String recipientName = cursor.getString(1);
+        String recipientContactNo = cursor.getString(2);
+        long recipientContactID = cursor.getInt(3);
+
+        Recipient recipient = new Recipient(recpientIDFromDB, recipientName, recipientContactNo, recipientContactID);
+
+        return recipient;
+    }
+
 }
