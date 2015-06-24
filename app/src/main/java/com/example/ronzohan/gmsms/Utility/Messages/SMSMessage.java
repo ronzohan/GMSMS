@@ -9,7 +9,6 @@ public class SMSMessage implements Message {
     private ArrayList<Recipient> messageRecipients;
     private String message;
     private Date time;
-    private int daySchedule_ID;
 
 
     public SMSMessage(String message) {
@@ -50,11 +49,4 @@ public class SMSMessage implements Message {
         this.time = time;
     }
 
-    public int getDaySchedule_ID() {
-        return daySchedule_ID;
-    }
-
-    public void setDaySchedule_ID(int daySchedule_ID) {
-        this.daySchedule_ID = daySchedule_ID;
-    }
 }
