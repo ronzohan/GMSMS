@@ -22,7 +22,7 @@ public class MessageManagerTest {
 
     @Before
     public void setUp() {
-        Recipient recipient = new Recipient("Clandine Salvedia","09355477233");
+        Recipient recipient = new Recipient(1,"Clandine Salvedia","09355477233");
 
         ArrayList<Recipient> recipientArrayList = new ArrayList<>();
         recipientArrayList.add(recipient);
@@ -40,7 +40,7 @@ public class MessageManagerTest {
 
         assertEquals(params.getDestinationAddress(), "09355477233");
 
-        smsMessageWithRecipients.addRecipient(new Recipient("Ron Magno", "09169777569"));
+        smsMessageWithRecipients.addRecipient(new Recipient(1,"Ron Magno", "09169777569"));
         messageManager.sendMessage();
         ShadowSmsManager.TextSmsParams params2 =
                 shadowOf(messageManager.smsManager).getLastSentTextMessageParams();

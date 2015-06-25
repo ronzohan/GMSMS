@@ -15,9 +15,9 @@ public class SMSMessageTest {
 
     @Before
     public void setUp() {
-        Recipient firstRecipient = new Recipient("Ron Magno","09169777569");
+        Recipient firstRecipient = new Recipient(1,"Ron Magno","09169777569");
         recipientCount++;
-        Recipient secondRecipient = new Recipient("Clandine Salvedia","09355477233");
+        Recipient secondRecipient = new Recipient(1,"Clandine Salvedia","09355477233");
         recipientCount++;
 
         ArrayList<Recipient> recipientArrayList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class SMSMessageTest {
 
     @Test
     public void addRecipientToSMSMessage() throws Exception {
-        Recipient firstRecipient = new Recipient("Zohan","09169777769");
+        Recipient firstRecipient = new Recipient(1,"Zohan","09169777769");
         smsMessageWithRecipients.addRecipient(firstRecipient);
         recipientCount++;
         assertEquals(smsMessageWithRecipients.getRecipients().size(), recipientCount);
@@ -38,7 +38,7 @@ public class SMSMessageTest {
 
     @Test
     public void shouldNotAddRecipientWithSameContactNo() throws Exception {
-        Recipient firstRecipient = new Recipient("Zohan", "09169777769");
+        Recipient firstRecipient = new Recipient(1,"Zohan", "09169777769");
         ArrayList<Recipient> recipientArrayList = new ArrayList<>();
         SMSMessage smsMessageWithNoMultipleRecipients = new SMSMessage("Whut", recipientArrayList);
 

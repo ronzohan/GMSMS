@@ -10,7 +10,7 @@ public class RecipientTest {
 
     @Before
     public void setUp() throws Exception{
-        recipient = new Recipient("Ron Daryl Magno", "09169777569");
+        recipient = new Recipient(1,"Ron Daryl Magno", "09169777569");
     }
 
     @Test
