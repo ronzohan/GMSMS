@@ -1,11 +1,9 @@
 package com.example.ronzohan.gmsms.Database;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
-
 import com.example.ronzohan.gmsms.BuildConfig;
 import com.example.ronzohan.gmsms.Utility.DaySchedule.DaySchedule;
+import com.example.ronzohan.gmsms.Utility.Messages.Message;
+import com.example.ronzohan.gmsms.Utility.Messages.SMSMessage;
 import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
 import static org.junit.Assert.assertEquals;
@@ -16,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+
+import java.util.ArrayList;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class)
@@ -32,7 +32,7 @@ public class DatabaseHelperTest {
 
     @Test
     public void shouldInsertAndRetrieveDaySchedule() {
-        DaySchedule daySchedule = new DaySchedule(0,0,0,0,0,0,0);
+        DaySchedule daySchedule = new DaySchedule(0,0,0,0,0,1,0);
         long dayScheduleID = databaseHelper.insertDaySchedule(messageInfoDoesNotExist, daySchedule);
 
         daySchedule.setId(dayScheduleID);
@@ -49,9 +49,11 @@ public class DatabaseHelperTest {
         assertEquals(daySchedule.getMessageInfoID(), dayScheduleFromDB.getMessageInfoID());
     }
 
+    @Test
     public void shouldInsertAndRetrieveRecipient() {
         Recipient recipient = new Recipient("Ron Magno", "09169777569");
-        long recipientIDFromDB = databaseHelper.insertRecipients(messageInfoDoesNotExist, recipient);
+        long recipientIDFromDB = databaseHelper.insertRecipients(
+                messageInfoDoesNotExist, recipient);
 
         Recipient recipientFromDB = databaseHelper.getRecipient(recipientIDFromDB);
 
@@ -59,6 +61,28 @@ public class DatabaseHelperTest {
         assertEquals(recipient.getContactNo(), recipientFromDB.getContactNo());
         assertEquals(recipient.getmContactID(), recipientFromDB.getmContactID());
         assertEquals(recipient.getName(), recipientFromDB.getName());
+    }
+
+    @Test
+    public void shouldInsertIntoMessageRecipientTable() {
+        SMSMessage smsMessage = new SMSMessage("Hello");
+        Recipient recipient = new Recipient("Ron Magno", "09169777569");
+
+        long recipientIDFromDB = databaseHelper.insertRecipients(
+                messageInfoDoesNotExist, recipient);
+        long smsMessageIDFromDB = databaseHelper.insertMessageInfo(smsMessage);
+
+        databaseHelper.insertIntoMessageRecipient(smsMessageIDFromDB, recipientIDFromDB);
+
+        ArrayList<Recipient> recipientArrayList;
+
+        recipientArrayList = databaseHelper.getAllRecipientsOfMessage(smsMessageIDFromDB);
+
+        assertEquals(recipient.getAddress(), recipientArrayList.get(0).getAddress());
+        assertEquals(recipient.getContactNo(), recipientArrayList.get(0).getContactNo());
+        assertEquals(recipient.getmContactID(), recipientArrayList.get(0).getmContactID());
+        assertEquals(recipient.getName(), recipientArrayList.get(0).getName());
+
     }
 
 
