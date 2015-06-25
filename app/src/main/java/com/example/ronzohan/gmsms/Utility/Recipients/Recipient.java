@@ -31,12 +31,12 @@ public class Recipient {
         this.mContactID = mContactID;
     }
 
-    public Recipient(long id,String name, String contactNo, String address) {
+    public Recipient(long id,String name, String contactNo, String address, long mContactID) {
         this.id = id;
         this.mName = name;
         this.mContactNo = contactNo;
         this.mAddress = address;
-        this.mContactID = -1;
+        this.mContactID = mContactID;
     }
     public String getName() {
         return mName;
