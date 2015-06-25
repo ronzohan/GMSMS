@@ -13,6 +13,7 @@ public class SMSMessage implements Message {
 
     public SMSMessage(String message) {
         this.message = message;
+        this.time = new Date(0);
     }
 
     public SMSMessage(String message, ArrayList<Recipient> messageRecipients) {
