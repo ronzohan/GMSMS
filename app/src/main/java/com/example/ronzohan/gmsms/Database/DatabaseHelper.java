@@ -11,14 +11,17 @@ import com.example.ronzohan.gmsms.Utility.DaySchedule.DaySchedule;
 import com.example.ronzohan.gmsms.Utility.Messages.SMSMessage;
 import com.example.ronzohan.gmsms.Utility.Recipients.Recipient;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "GMSMS";
 
     //Table Name
     private static final String TABLE_MESSAGEINFO = "messageinfo";
     private static final String TABLE_SIMASSIGNED =  "simassigned";
     private static final String TABLE_RECIPIENTS = "recipients";
+    private static final String TABLE_MESSAGE_RECIPIENTS = "message_recipients";
     private static final String TABLE_DAYS = "days";
 
     //MessageInfo Column Names
@@ -35,6 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_CONTACTNAME = "name";
     private static final String COLUMN_CONTACTADDRESS = "address";
     private static final String COLUMN_CONTACTNO = "contact_no";
+
+    //Message Recipients Column Names
+    private static final String COLUMN_CONTACTID_FK = "contact_id_fk";
 
     //Days Column Names
     private static final String COLUMN_MONDAY = "monday";
@@ -59,8 +65,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_RECIPIENTS_TABLE = "CREATE TABLE " + TABLE_RECIPIENTS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CONTACTID + " INTEGER,"
             + COLUMN_CONTACTNAME + " TEXT," + COLUMN_CONTACTADDRESS + " TEXT, "
-            + COLUMN_MESSAGEINFO_FK + " INTEGER, FOREIGN KEY ("+ COLUMN_MESSAGEINFO_FK
-            +") REFERENCES " + TABLE_MESSAGEINFO + "(" + COLUMN_ID+ ")" + ");";
+            + COLUMN_CONTACTNO + " TEXT"
+            + ");";
 
     private static final String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -74,6 +80,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_MESSAGEINFO_FK + " INTEGER, FOREIGN KEY ("+ COLUMN_MESSAGEINFO_FK
             +") REFERENCES " + TABLE_MESSAGEINFO + "(" + COLUMN_ID+ ")" + ");";
 
+    private static final String CREATE_MESSAGE_RECIPIENTS_TABLE = "CREATE TABLE "
+            + TABLE_MESSAGE_RECIPIENTS + "("
+            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_CONTACTID_FK + " INTEGER, "
+            + COLUMN_MESSAGEINFO_FK + " INTEGER, "
+            + "FOREIGN KEY (" + COLUMN_CONTACTID_FK
+            + ") REFERENCES " + TABLE_RECIPIENTS + "(" + COLUMN_ID + ") "
+            + "FOREIGN KEY (" + COLUMN_MESSAGEINFO_FK
+            + ") REFERENCES " + TABLE_MESSAGEINFO + "(" + COLUMN_ID + ")" + ");";
+
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         SQLiteDatabase db = this.getWritableDatabase();
@@ -85,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_MESSAGEINFO_TABLE);
         db.execSQL(CREATE_RECIPIENTS_TABLE);
         db.execSQL(CREATE_SIMASSIGNED_TABLE);
+        db.execSQL(CREATE_MESSAGE_RECIPIENTS_TABLE);
     }
 
     @Override
@@ -96,6 +114,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPIENTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SIMASSIGNED);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_MESSAGE_RECIPIENTS_TABLE);
         onCreate(db);
     }
 
@@ -110,18 +129,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
     }
 
-//    public SMSMessage getSMSMessage(int smsMessageID) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        String selectQuery = "SELECT  * FROM " + TABLE_MESSAGEINFO + " WHERE "
-//                + COLUMN_ID + " = " + smsMessageID;
-//
-//        Cursor c = db.rawQuery(selectQuery, null);
-//        if (c != null)
-//            c.moveToFirst();
-//
-//        SMSMessage smsMessage = new SMSMessage()
-//    }
     public long insertDaySchedule(int messageInfoID, DaySchedule daySchedule) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_MONDAY, daySchedule.getMONDAY());
@@ -148,6 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         DaySchedule daySchedule = new DaySchedule();
+
         daySchedule.setId(cursor.getInt(0));
         daySchedule.setMONDAY(cursor.getInt(1));
         daySchedule.setTUESDAY(cursor.getInt(2));
@@ -158,6 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         daySchedule.setSUNDAY(cursor.getInt(7));
         daySchedule.setMessageInfoID(cursor.getInt(8));
 
+        cursor.close();
         return daySchedule;
     }
 
@@ -166,6 +175,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CONTACTID, recipient.getmContactID());
         values.put(COLUMN_CONTACTNAME, recipient.getName());
         values.put(COLUMN_CONTACTADDRESS, recipient.getAddress());
+        values.put(COLUMN_CONTACTNO, recipient.getContactNo());
 
         return getWritableDatabase().insert(TABLE_RECIPIENTS, null, values);
     }
@@ -180,14 +190,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        long recpientIDFromDB = cursor.getInt(0);
-        String recipientName = cursor.getString(1);
-        String recipientContactNo = cursor.getString(2);
-        long recipientContactID = cursor.getInt(3);
+        long recpientIDFromDB = (!cursor.isNull(0)) ? cursor.getInt(0) : -1 ;
+        long recipientContactID = cursor.getInt(1);
+        String recipientName = cursor.getString(2);
+        String recipientAddress = cursor.getString(3);
+        String recipientContactNo = cursor.getString(4);
 
-        Recipient recipient = new Recipient(recpientIDFromDB, recipientName, recipientContactNo, recipientContactID);
 
-        return recipient;
+        cursor.close();
+
+        return  new Recipient(
+                recpientIDFromDB, recipientName, recipientContactNo,
+                recipientAddress,recipientContactID);
     }
 
+    public long insertIntoMessageRecipient(long messageInfoID, long recipientID) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_MESSAGEINFO_FK, messageInfoID);
+        values.put(COLUMN_CONTACTID_FK, recipientID);
+
+        return getWritableDatabase().insert(TABLE_MESSAGE_RECIPIENTS, null, values);
+    }
+
+    public ArrayList<Recipient> getAllRecipientsOfMessage(long smsMessageID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Recipient> recipientArrayList = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_RECIPIENTS + " INNER JOIN "
+                + TABLE_MESSAGE_RECIPIENTS + " ON " + TABLE_RECIPIENTS + "." + COLUMN_ID
+                + " = " + TABLE_MESSAGE_RECIPIENTS + "." + COLUMN_ID;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    Recipient recipient = new Recipient(
+                        cursor.getInt(0), cursor.getString(2), cursor.getString(4),
+                            cursor.getString(3), cursor.getInt(1));
+
+                    recipientArrayList.add(recipient);
+                } while (cursor.moveToNext());
+            }
+        }
+
+        return recipientArrayList;
+    }
 }
